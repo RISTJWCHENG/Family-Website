@@ -35,6 +35,7 @@
   <a href="#video">Video</a>
   <a href="#article">Article</a>
   <a href="#audio">Audio</a>
+  <a href="#information">Information</a>
 </nav>
 
 <!-- Home -->
@@ -48,19 +49,31 @@
   <h2>Photos</h2>
   <div class="gallery">
     <img src="https://edef2.pcloud.com/DLZPhtRpIZuJ5Pf17Z7ueBZZwSKL0kZ2ZZxnJZZkaVZzzZO0ZcJZNMVYjVdBdn8ePl8uX9WPQuiquJDX/Reset%20Curve%28s%29_Demo_Icon_01.png" alt="Demo Image" onclick="openLightbox(this.src)">
-    <!-- 可以继续添加更多图片 -->
+    <img src="https://edef7.pcloud.com/cfZjVh8pIZS1hlf17Z7ueBZZHxKL0kZ2ZZxnJZZL616ZUVZdFZOFZ37ZQHZg4Zu4Zc5ZQpZkkZXzZGVZIzZiRZ5tjD2qzoj5fiD82BNTGTspka3MPk/img006.jpg" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://edef7.pcloud.com/cfZPYi0pIZb8mjf17Z7ueBZZvxKL0kZ2ZZxnJZZKRRbZ3FZ10ZQzZtXZKLZJ4Z0pZ1FZGzZs4ZIFZxpZfJZo5ZCeShEPeSQgFSTb0pukKL1FUF1u0X/imcdg026.jpg" alt="Image 2" onclick="openLightbox(this.src)">
+    <img src="https://edef9.pcloud.com/DLZhSh8pIZ0SSlf17Z7ueBZZSwKL0kZ2ZZxnJZZsAIkZn0ZwHZDzZgAtaDAJm4Lur23Ypsi9IEyTHFAIV/%E6%9C%AA%E6%A0%87fff%E9%A2%98-1.jpg" alt="Image 3" onclick="openLightbox(this.src)">
+    <img src="https://edef1.pcloud.com/cfZDsG0pIZs84jf17Z7ueBZZ7KKL0kZ2ZZxnJZZkD3jZaFZSpZ54ZrzZ6FZh4ZyJZ8zZG5ZeLZdzZT4ZiHZMJZP69SM9OHnmL8Pm8ydhyIkjh7mK77/imccg041.jpg" alt="Image 4" onclick="openLightbox(this.src)">
   </div>
 </section>
 
 <!-- Video -->
 <section id="video">
   <h2>Videos</h2>
+
   <div class="video-container">
     <video controls poster="https://via.placeholder.com/800x450">
       <source src="https://edef1.pcloud.com/cfZwbFzpIZtV39f17Z7ueBZZxpKL0kZ2ZZxnJZZMzHQZ3VZV8Z9VZiRZHLZXLZh5ZczZA4Zu4Z8HZK0ZL8ZopZiF2hO9rlbqXpbxVkGUeb8BBJgX1y/2025.05.01-10.00.08_SHOT_V00_WuZhen_BY-RIST%20JIANWEN%20CHENG.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
+
+  <div class="video-container">
+    <video controls poster="https://via.placeholder.com/800x450">
+      <source src="https://edef2.pcloud.com/cfZ9rQQpIZKp1qf17Z7ueBZZHtKL0kZ2ZZxnJZZ1DXX7ZuzZ9pZl0ZpzZSLZ7LZvHZvRZsFZ0JZCFZMVZt4ZKJZMx2HsBoo2akq7ielEbpCH0K8IBHX/vid-250506231211213.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
 </section>
 
 <!-- Articles -->
@@ -69,7 +82,6 @@
   <input type="text" id="search" placeholder="Search articles..." onkeyup="filterArticles()">
   <div class="article-list">
 
-    <!-- 第一篇文章：ODT 文档内容 -->
     <div class="article" data-category="Document">
       <div class="article-title">Reset Curve(s) Document</div>
       <div class="article-category">Category: Document</div>
@@ -78,16 +90,6 @@
         <p><strong>Example bold text</strong> and <em>italic text</em> can be included.</p>
         <p>Embedded image from document:</p>
         <img src="https://edef2.pcloud.com/DLZPhtRpIZuJ5Pf17Z7ueBZZwSKL0kZ2ZZxnJZZkaVZzzZO0ZcJZNMVYjVdBdn8ePl8uX9WPQuiquJDX/Reset%20Curve%28s%29_Demo_Icon_01.png" alt="Document Image">
-        <p>Continue adding all text and images here, preserving the original layout of the document.</p>
-      </div>
-    </div>
-
-    <!-- 示例其他文章 -->
-    <div class="article" data-category="Family">
-      <div class="article-title">Family Gathering 2025</div>
-      <div class="article-category">Category: Family</div>
-      <div class="article-content">
-        <p>Details about our annual family gathering...</p>
       </div>
     </div>
 
@@ -97,10 +99,16 @@
 <!-- Audio -->
 <section id="audio">
   <h2>Audio</h2>
-  <audio controls>
-    <source src="https://edef10.pcloud.com/cfZgiE0pIZWWrSf17Z7ueBZZO7KL0kZ2ZZxnJZZCdimZfRZbpZULZYRZiVZmJZGzZGHZd4Z15ZaRZJ8ZlLZG0Z7uBuq5GUlX7opH4We27RLkxpVW47/%E3%80%8A%E8%BD%BB%E4%B8%8E%E9%87%8D%E3%80%8B-%20%E8%B0%88%E8%AF%9D%E5%BD%95-%E7%89%87%E6%AE%B5-0056.mp3" type="audio/mpeg">
+  <audio id="background-audio" controls autoplay loop>
+    <source src="https://edef1.pcloud.com/cfZIPMwFIZ2p2eu17Z7ueBZZ26KL0kZ2ZZxnJZZbHa4ZzpZv0ZB8Z78Z60ZrFZY0Z04ZSHZIVZXFZOHZwLZH5ZndlhdEDcYv8ufk1PuDbfvRY2PfDX/Clio%20-%20Quelqu%E2%80%99un%20quelque%20part%20%28Clip%20officiel%29-yt.savetube.me.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+</section>
+
+<!-- Information -->
+<section id="information">
+  <h2>Information</h2>
+  <p>This section can contain additional family info, contact details, instructions, or any other content you'd like to share.</p>
 </section>
 
 <!-- Lightbox -->
@@ -113,31 +121,4 @@
   document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-    });
-  });
-
-  // Fade-in sections
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
-  }, {threshold:0.2});
-  sections.forEach(s => observer.observe(s));
-
-  // Lightbox
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  function openLightbox(src){ lightboxImg.src = src; lightbox.style.display = 'flex'; }
-  lightbox.addEventListener('click', () => { lightbox.style.display='none'; });
-
-  // Article search
-  function filterArticles(){
-    const query = document.getElementById('search').value.toLowerCase();
-    document.querySelectorAll('.article').forEach(article => {
-      article.style.display = article.innerText.toLowerCase().includes(query) ? '' : 'none';
-    });
-  }
-</script>
-
-</body>
-</html>
+      document.querySelector(link.getAttribute('href')).scrollIntoView({
