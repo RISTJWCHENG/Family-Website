@@ -25,6 +25,8 @@
   @media(max-width:600px){
     .video-container video { height:200px; }
   }
+  #lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:2000; }
+  #lightbox img { max-width:90%; max-height:90%; border-radius:8px; }
 </style>
 </head>
 <body>
@@ -38,65 +40,49 @@
   <a href="#information">Information</a>
 </nav>
 
-<!-- Home -->
 <section id="home">
   <h2>Welcome to Our Family Website</h2>
   <p>Browse photos, videos, articles, and audio shared with family members.</p>
 </section>
 
-<!-- Gallery -->
 <section id="gallery">
   <h2>Photos</h2>
   <div class="gallery">
-    <img src="https://edef2.pcloud.com/DLZPhtRpIZuJ5Pf17Z7ueBZZwSKL0kZ2ZZxnJZZkaVZzzZO0ZcJZNMVYjVdBdn8ePl8uX9WPQuiquJDX/Reset%20Curve%28s%29_Demo_Icon_01.png" alt="Demo Image" onclick="openLightbox(this.src)">
-    <img src="https://edef7.pcloud.com/cfZjVh8pIZS1hlf17Z7ueBZZHxKL0kZ2ZZxnJZZL616ZUVZdFZOFZ37ZQHZg4Zu4Zc5ZQpZkkZXzZGVZIzZiRZ5tjD2qzoj5fiD82BNTGTspka3MPk/img006.jpg" alt="Image 1" onclick="openLightbox(this.src)">
-    <img src="https://edef7.pcloud.com/cfZPYi0pIZb8mjf17Z7ueBZZvxKL0kZ2ZZxnJZZKRRbZ3FZ10ZQzZtXZKLZJ4Z0pZ1FZGzZs4ZIFZxpZfJZo5ZCeShEPeSQgFSTb0pukKL1FUF1u0X/imcdg026.jpg" alt="Image 2" onclick="openLightbox(this.src)">
-    <img src="https://edef9.pcloud.com/DLZhSh8pIZ0SSlf17Z7ueBZZSwKL0kZ2ZZxnJZZsAIkZn0ZwHZDzZgAtaDAJm4Lur23Ypsi9IEyTHFAIV/%E6%9C%AA%E6%A0%87fff%E9%A2%98-1.jpg" alt="Image 3" onclick="openLightbox(this.src)">
-    <img src="https://edef1.pcloud.com/cfZDsG0pIZs84jf17Z7ueBZZ7KKL0kZ2ZZxnJZZkD3jZaFZSpZ54ZrzZ6FZh4ZyJZ8zZG5ZeLZdzZT4ZiHZMJZP69SM9OHnmL8Pm8ydhyIkjh7mK77/imccg041.jpg" alt="Image 4" onclick="openLightbox(this.src)">
+    <img src="https://edef7.pcloud.com/DLZEOA0pIZEzJjf17Z7ueBZZwvKL0kZ2ZZxnJZZSdN7ZqHZCLZ6zZSRKzx5xRS8zBcqHr5RDEU0x8zitk/%E6%9C%AA%E6%A0%87hgh%E9%A2%98-1.jpg" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://edef9.pcloud.com/DLZhSh8pIZ0SSlf17Z7ueBZZBiKL0kZ2ZZxnJZZsAIkZwHZn0ZDzZguUlSEoWegHrnA3JopHl75RMpBek/%E6%9C%AA%E6%A0%87fff%E9%A2%98-1.jpg" alt="Image 2" onclick="openLightbox(this.src)">
+    <img src="https://edef7.pcloud.com/cfZjVh8pIZS1hlf17Z7ueBZZkrKL0kZ2ZZxnJZZL616ZUVZdFZOFZ37ZQHZg4Zu4Zc5ZQpZkkZXzZGVZIzZiRZOECXH38zNm4tMqdIrw9iaHSHp9fk/img006.jpg" alt="Image 3" onclick="openLightbox(this.src)">
+    <img src="https://edef7.pcloud.com/cfZPYi0pIZb8mjf17Z7ueBZZurKL0kZ2ZZxnJZZKRRbZ3FZ10ZQzZtXZKLZJ4Z0pZ1FZGzZs4ZIFZxpZfJZo5ZH6j4qP1EXg4WHKqpKft8BYgrz7jX/imcdg026.jpg" alt="Image 4" onclick="openLightbox(this.src)">
   </div>
 </section>
 
-<!-- Video -->
 <section id="video">
   <h2>Videos</h2>
-
   <div class="video-container">
-    <video controls poster="https://via.placeholder.com/800x450">
+    <video controls>
       <source src="https://edef1.pcloud.com/cfZwbFzpIZtV39f17Z7ueBZZxpKL0kZ2ZZxnJZZMzHQZ3VZV8Z9VZiRZHLZXLZh5ZczZA4Zu4Z8HZK0ZL8ZopZiF2hO9rlbqXpbxVkGUeb8BBJgX1y/2025.05.01-10.00.08_SHOT_V00_WuZhen_BY-RIST%20JIANWEN%20CHENG.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
-
   <div class="video-container">
-    <video controls poster="https://via.placeholder.com/800x450">
+    <video controls>
       <source src="https://edef2.pcloud.com/cfZ9rQQpIZKp1qf17Z7ueBZZHtKL0kZ2ZZxnJZZ1DXX7ZuzZ9pZl0ZpzZSLZ7LZvHZvRZsFZ0JZCFZMVZt4ZKJZMx2HsBoo2akq7ielEbpCH0K8IBHX/vid-250506231211213.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
-
 </section>
 
-<!-- Articles -->
 <section id="article">
   <h2>Articles</h2>
-  <input type="text" id="search" placeholder="Search articles..." onkeyup="filterArticles()">
-  <div class="article-list">
-
-    <div class="article" data-category="Document">
-      <div class="article-title">Reset Curve(s) Document</div>
-      <div class="article-category">Category: Document</div>
-      <div class="article-content">
-        <p>This is the content extracted from your ODT document. All paragraphs and formatting are preserved as HTML.</p>
-        <p><strong>Example bold text</strong> and <em>italic text</em> can be included.</p>
-        <p>Embedded image from document:</p>
-        <img src="https://edef2.pcloud.com/DLZPhtRpIZuJ5Pf17Z7ueBZZwSKL0kZ2ZZxnJZZkaVZzzZO0ZcJZNMVYjVdBdn8ePl8uX9WPQuiquJDX/Reset%20Curve%28s%29_Demo_Icon_01.png" alt="Document Image">
-      </div>
+  <div class="article">
+    <div class="article-title">Reset Curve(s) Document</div>
+    <div class="article-category">Category: Document</div>
+    <div class="article-content">
+      <p>This is a sample content from your document. Preserve text and images here.</p>
+      <img src="https://edef2.pcloud.com/DLZPhtRpIZuJ5Pf17Z7ueBZZwSKL0kZ2ZZxnJZZkaVZzzZO0ZcJZNMVYjVdBdn8ePl8uX9WPQuiquJDX/Reset%20Curve%28s%29_Demo_Icon_01.png" alt="Document Image">
     </div>
-
   </div>
 </section>
 
-<!-- Audio -->
 <section id="audio">
   <h2>Audio</h2>
   <audio id="background-audio" controls autoplay loop>
@@ -105,20 +91,47 @@
   </audio>
 </section>
 
-<!-- Information -->
 <section id="information">
   <h2>Information</h2>
-  <p>This section can contain additional family info, contact details, instructions, or any other content you'd like to share.</p>
+  <p>Additional family info, contact details, or instructions.</p>
 </section>
 
-<!-- Lightbox -->
-<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:2000;">
-  <img id="lightbox-img" src="" style="max-width:90%; max-height:90%; border-radius:8px;">
+<div id="lightbox">
+  <img id="lightbox-img" src="">
 </div>
 
 <script>
-  // Smooth scroll
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+    });
+  }, {threshold:0.1});
+  sections.forEach(section => observer.observe(section));
+
   document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', e => {
+    link.addEventListener('click', e=>{
       e.preventDefault();
-      document.querySelector(link.getAttribute('href')).scrollIntoView({
+      document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  function openLightbox(src){
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = src;
+    lb.style.display='flex';
+    lb.onclick = ()=> lb.style.display='none';
+  }
+
+  const audio = document.getElementById('background-audio');
+  window.addEventListener('load',()=>{
+    const playPromise = audio.play();
+    if(playPromise!==undefined){
+      playPromise.catch(error=>console.log("Autoplay prevented:", error));
+    }
+  });
+</script>
+
+</body>
+</html>
