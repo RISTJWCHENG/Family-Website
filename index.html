@@ -10,7 +10,8 @@
   section { padding:60px 20px; max-width:1000px; margin:auto; opacity:0; transform: translateY(20px); transition: opacity 0.8s, transform 0.8s;}
   section.visible { opacity:1; transform: translateY(0);}
   nav { position:fixed; top:0; left:0; right:0; background:#fff; border-bottom:1px solid #ddd; display:flex; justify-content:center; padding:10px; z-index:1000; }
-  nav a { margin:0 15px; text-decoration:none; color:#333; font-weight:bold; }
+  nav a, #bgm-toggle { margin:0 10px; text-decoration:none; color:#333; font-weight:bold; cursor:pointer; }
+  #bgm-toggle { padding:5px 10px; border:1px solid #333; border-radius:5px; }
   .gallery { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:15px; }
   .gallery img { width:100%; border-radius:8px; cursor:pointer; transition: transform 0.3s; }
   .gallery img:hover { transform:scale(1.05); }
@@ -38,6 +39,7 @@
   <a href="#article">Article</a>
   <a href="#audio">Audio</a>
   <a href="#information">Information</a>
+  <span id="bgm-toggle">🔊 BGM On/Off</span>
 </nav>
 
 <section id="home">
@@ -58,13 +60,13 @@
 <section id="video">
   <h2>Videos</h2>
   <div class="video-container">
-    <video controls>
+    <video class="site-video" controls>
       <source src="https://edef1.pcloud.com/cfZwbFzpIZtV39f17Z7ueBZZxpKL0kZ2ZZxnJZZMzHQZ3VZV8Z9VZiRZHLZXLZh5ZczZA4Zu4Z8HZK0ZL8ZopZiF2hO9rlbqXpbxVkGUeb8BBJgX1y/2025.05.01-10.00.08_SHOT_V00_WuZhen_BY-RIST%20JIANWEN%20CHENG.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
   <div class="video-container">
-    <video controls>
+    <video class="site-video" controls>
       <source src="https://edef2.pcloud.com/cfZ9rQQpIZKp1qf17Z7ueBZZHtKL0kZ2ZZxnJZZ1DXX7ZuzZ9pZl0ZpzZSLZ7LZvHZvRZsFZ0JZCFZMVZt4ZKJZMx2HsBoo2akq7ielEbpCH0K8IBHX/vid-250506231211213.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -85,8 +87,8 @@
 
 <section id="audio">
   <h2>Audio</h2>
-  <audio id="background-audio" controls autoplay loop>
-    <source src="https://edef1.pcloud.com/cfZIPMwFIZ2p2eu17Z7ueBZZ26KL0kZ2ZZxnJZZbHa4ZzpZv0ZB8Z78Z60ZrFZY0Z04ZSHZIVZXFZOHZwLZH5ZndlhdEDcYv8ufk1PuDbfvRY2PfDX/Clio%20-%20Quelqu%E2%80%99un%20quelque%20part%20%28Clip%20officiel%29-yt.savetube.me.mp3" type="audio/mpeg">
+  <audio class="site-audio" controls>
+    <source src="https://edef10.pcloud.com/cfZgiE0pIZWWrSf17Z7ueBZZO7KL0kZ2ZZxnJZZbHa4ZzpZv0ZB8Z78Z60ZrFZY0Z04ZSHZIVZXFZOHZwLZH5ZndlhdEDcYv8ufk1PuDbfvRY2PfDX/%E3%80%8A%E8%BD%BB%E4%B8%8E%E9%87%8D%E3%80%8B-%20%E8%B0%88%E8%AF%9D%E5%BD%95-%E7%89%87%E6%AE%B5-0056.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 </section>
@@ -100,7 +102,12 @@
   <img id="lightbox-img" src="">
 </div>
 
+<audio id="background-audio" loop>
+  <source src="https://edef1.pcloud.com/cfZIPMwFIZ2p2eu17Z7ueBZZWVlL0kZ2ZZxnJZZbHa4ZzpZv0ZB8Z78Z60ZrFZY0Z04ZSHZIVZXFZOHZwLZH5ZUbJIAWS35tRHjqhoboM67QquBf1X/Clio%20-%20Quelqu%E2%80%99un%20quelque%20part%20%28Clip%20officiel%29-yt.savetube.me.mp3" type="audio/mpeg">
+</audio>
+
 <script>
+  // Fade-in on scroll
   const sections = document.querySelectorAll('section');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -109,6 +116,7 @@
   }, {threshold:0.1});
   sections.forEach(section => observer.observe(section));
 
+  // Smooth scroll
   document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', e=>{
       e.preventDefault();
@@ -116,6 +124,7 @@
     });
   });
 
+  // Lightbox for images
   function openLightbox(src){
     const lb = document.getElementById('lightbox');
     const img = document.getElementById('lightbox-img');
@@ -124,9 +133,25 @@
     lb.onclick = ()=> lb.style.display='none';
   }
 
-  const audio = document.getElementById('background-audio');
+  // Background audio control
+  const bgm = document.getElementById('background-audio');
+  let bgmPlaying = true;
+  const toggleBtn = document.getElementById('bgm-toggle');
+  toggleBtn.addEventListener('click', ()=>{
+    if(bgmPlaying){ bgm.pause(); bgmPlaying=false; }
+    else { bgm.play(); bgmPlaying=true; }
+  });
+
+  // Pause bgm when any site video/audio plays
+  const siteMedia = document.querySelectorAll('.site-video, .site-audio');
+  siteMedia.forEach(media=>{
+    media.addEventListener('play', ()=> { bgm.pause(); });
+    media.addEventListener('pause', ()=> { if(bgmPlaying) bgm.play(); });
+    media.addEventListener('ended', ()=> { if(bgmPlaying) bgm.play(); });
+  });
+
   window.addEventListener('load',()=>{
-    const playPromise = audio.play();
+    const playPromise = bgm.play();
     if(playPromise!==undefined){
       playPromise.catch(error=>console.log("Autoplay prevented:", error));
     }
