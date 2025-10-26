@@ -5,30 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Family Multimedia Website</title>
 <style>
-  body { margin:0; font-family: Arial, sans-serif; background:#f9f9f9; color:#333; }
-  h2 { margin-bottom:10px; }
-  section { padding:60px 20px; max-width:1000px; margin:auto; opacity:0; transform: translateY(20px); transition: opacity 0.8s, transform 0.8s;}
-  section.visible { opacity:1; transform: translateY(0);}
-  nav { position:fixed; top:0; left:0; right:0; background:#fff; border-bottom:1px solid #ddd; display:flex; justify-content:center; padding:10px; z-index:1000; flex-wrap:wrap; }
-  nav a, #bgm-toggle { margin:5px 10px; text-decoration:none; color:#333; font-weight:bold; cursor:pointer; }
-  #bgm-toggle { padding:5px 10px; border:1px solid #333; border-radius:5px; }
-  .gallery { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:15px; }
-  .photo-card img { width:100%; border-radius:8px; cursor:pointer; transition: transform 0.3s; }
-  .photo-card img:hover { transform:scale(1.05); }
-  .photo-info { font-size:0.9em; color:#555; margin-top:5px; }
-  .video-container { margin-bottom:20px; }
-  .video-container video { width:100%; height:400px; border-radius:8px; }
-  audio { width:100%; margin-bottom:20px; }
-  .article { margin-bottom:30px; }
-  .article-title { font-weight:bold; font-size:1.2em; margin-bottom:10px; }
-  .article-category { font-size:0.9em; color:#555; margin-bottom:10px; }
-  .article-content p { margin-bottom:10px; line-height:1.6; }
-  .article-content img { max-width:100%; margin:10px 0; border-radius:5px; }
-  @media(max-width:600px){
-    .video-container video { height:200px; }
-  }
-  #lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:2000; flex-direction:column; color:#fff; text-align:center; padding:20px; overflow:auto;}
-  #lightbox img { max-width:80%; max-height:60%; border-radius:8px; margin-bottom:15px; }
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f0f0f0; }
+nav { position:fixed; top:0; width:100%; background:#333; color:white; display:flex; gap:15px; padding:10px; z-index:1000; align-items:center;}
+nav a, nav button { color:white; text-decoration:none; cursor:pointer; background:none; border:none; font-size:18px;}
+section { padding:80px 20px 40px 20px; opacity:0; transition:opacity 1s ease; }
+section.visible { opacity:1; }
+#gallery { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:10px; }
+.photo-card { position:relative; background:white; padding:10px; border-radius:8px; box-shadow:0 0 5px rgba(0,0,0,0.2);}
+.photo-card img { width:100%; border-radius:8px; cursor:pointer;}
+.photo-info { margin-top:5px; font-size:14px; }
+#lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:2000; flex-direction:row; color:white; overflow:auto; }
+.lightbox-content { max-width:70%; margin:20px; text-align:center; }
+.lightbox-content img { max-width:100%; border-radius:8px; }
+#lightbox-comments { background:#222; padding:10px; border-radius:8px; width:25%; max-width:400px; overflow-y:auto; max-height:80vh; }
+.comment-item { margin-bottom:10px; word-break:break-word; }
+.comment-item button.delete-comment { margin-left:5px; font-size:12px; }
+.comment-reply { margin-left:15px; border-left:1px solid #555; padding-left:5px; }
+.comment-controls { display:flex; gap:5px; margin-top:2px; }
+button { cursor:pointer; padding:5px 10px; border-radius:5px; }
+audio, video { max-width:100%; margin-top:10px; }
+.sort-buttons { margin-bottom:5px; }
+@media(max-width:768px){
+  #lightbox { flex-direction:column; }
+  .lightbox-content { max-width:90%; }
+  #lightbox-comments { width:90%; max-height:300px; margin-top:10px; }
+}
 </style>
 </head>
 <body>
@@ -38,159 +39,236 @@
   <a href="#gallery">Gallery</a>
   <a href="#video">Video</a>
   <a href="#article">Article</a>
-  <a href="#audio">Audio</a>
   <a href="#information">Information</a>
-  <span id="bgm-toggle">🔊 BGM On/Off</span>
+  <button id="bgm-toggle">🎵</button>
 </nav>
 
+<audio id="bgm" loop autoplay src="https://edef1.pcloud.com/cfZIPMwFIZ2p2eu17Z7ueBZZWVlL0kZ2ZZxnJZZbHa4ZzpZv0ZB8Z78Z60ZrFZY0Z04ZSHZIVZXFZOHZwLZH5ZUbJIAWS35tRHjqhoboM67QquBf1X/Clio%20-%20Quelqu%E2%80%99un%20quelque%20part%20%28Clip%20officiel%29-yt.savetube.me.mp3"></audio>
+
 <section id="home">
-  <h2>Welcome to Our Family Website</h2>
-  <p>Browse photos, videos, articles, and audio shared with family members.</p>
+  <h1>Welcome to Our Family Multimedia Website</h1>
 </section>
 
 <section id="gallery">
-  <h2>Photos</h2>
-  <div class="gallery">
-    <div class="photo-card">
-      <img src="https://edef7.pcloud.com/DLZEOA0pIZEzJjf17Z7ueBZZwvKL0kZ2ZZxnJZZSdN7ZqHZCLZ6zZSRKzx5xRS8zBcqHr5RDEU0x8zitk/%E6%9C%AA%E6%A0%87hgh%E9%A2%98-1.jpg" alt="Image 1" onclick="openLightboxWithInfo(this)">
-      <div class="photo-info">
-        <p><strong>Time:</strong> 2025-05-01 10:00</p>
-        <p><strong>Theme:</strong> Family Gathering</p>
-        <p><strong>Description:</strong> Photo taken during family reunion in WuZhen.</p>
-      </div>
-    </div>
+  <h2>Gallery</h2>
 
-    <div class="photo-card">
-      <img src="https://edef9.pcloud.com/DLZhSh8pIZ0SSlf17Z7ueBZZBiKL0kZ2ZZxnJZZsAIkZwHZn0ZDzZguUlSEoWegHrnA3JopHl75RMpBek/%E6%9C%AA%E6%A0%87fff%E9%A2%98-1.jpg" alt="Image 2" onclick="openLightboxWithInfo(this)">
-      <div class="photo-info">
-        <p><strong>Time:</strong> 2025-05-02 14:30</p>
-        <p><strong>Theme:</strong> Scenic View</p>
-        <p><strong>Description:</strong> Afternoon view of the river in spring.</p>
-      </div>
-    </div>
-
-    <div class="photo-card">
-      <img src="https://edef7.pcloud.com/cfZjVh8pIZS1hlf17Z7ueBZZkrKL0kZ2ZZxnJZZL616ZUVZdFZOFZ37ZQHZg4Zu4Zc5ZQpZkkZXzZGVZIzZiRZOECXH38zNm4tMqdIrw9iaHSHp9fk/img006.jpg" alt="Image 3" onclick="openLightboxWithInfo(this)">
-      <div class="photo-info">
-        <p><strong>Time:</strong> 2025-05-03 09:15</p>
-        <p><strong>Theme:</strong> Morning Walk</p>
-        <p><strong>Description:</strong> Early morning stroll in the garden.</p>
-      </div>
-    </div>
-
-    <div class="photo-card">
-      <img src="https://edef7.pcloud.com/cfZPYi0pIZb8mjf17Z7ueBZZurKL0kZ2ZZxnJZZKRRbZ3FZ10ZQzZtXZKLZJ4Z0pZ1FZGzZs4ZIFZxpZfJZo5ZH6j4qP1EXg4WHKqpKft8BYgrz7jX/imcdg026.jpg" alt="Image 4" onclick="openLightboxWithInfo(this)">
-      <div class="photo-info">
-        <p><strong>Time:</strong> 2025-05-03 15:45</p>
-        <p><strong>Theme:</strong> Afternoon Tea</p>
-        <p><strong>Description:</strong> Relaxing moment with tea and family.</p>
-      </div>
+  <!-- 所有图片示例 -->
+  <div class="photo-card">
+    <img src="https://edef7.pcloud.com/DLZEOA0pIZEzJjf17Z7ueBZZwvKL0kZ2ZZxnJZZSdN7ZqHZCLZ6zZSRKzx5xRS8zBcqHr5RDEU0x8zitk/未标题hgh题-1.jpg" alt="Image1" onclick="openLightbox(this,1)">
+    <div class="photo-info">
+      <p><strong>Time:</strong> 2025-05-01</p>
+      <p><strong>Theme:</strong> Trip</p>
+      <p><strong>Description:</strong> First day of the trip.</p>
     </div>
   </div>
+
+  <div class="photo-card">
+    <img src="https://edef9.pcloud.com/DLZhSh8pIZ0SSlf17Z7ueBZZBiKL0kZ2ZZxnJZZsAIkZwHZn0ZDzZguUlSEoWegHrnA3JopHl75RMpBek/未标题fff题-1.jpg" alt="Image2" onclick="openLightbox(this,2)">
+    <div class="photo-info">
+      <p><strong>Time:</strong> 2025-05-02</p>
+      <p><strong>Theme:</strong> Family Dinner</p>
+      <p><strong>Description:</strong> Enjoying dinner together.</p>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="https://edef7.pcloud.com/cfZjVh8pIZS1hlf17Z7ueBZZHxKL0kZ2ZZxnJZZL616ZUVZdFZOFZ37ZQHZg4Zu4Zc5ZQpZkkZXzZGVZIzZiRZOECXH38zNm4tMqdIrw9iaHSHp9fk/img006.jpg" alt="Image3" onclick="openLightbox(this,3)">
+    <div class="photo-info">
+      <p><strong>Time:</strong> 2025-05-03</p>
+      <p><strong>Theme:</strong> Sightseeing</p>
+      <p><strong>Description:</strong> Visiting landmarks.</p>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="https://edef7.pcloud.com/cfZPYi0pIZb8mjf17Z7ueBZZurKL0kZ2ZZxnJZZKRRbZ3FZ10ZQzZtXZKLZJ4Z0pZ1FZGzZs4ZIFZxpZfJZo5ZH6j4qP1EXg4WHKqpKft8BYgrz7jX/imcdg026.jpg" alt="Image4" onclick="openLightbox(this,4)">
+    <div class="photo-info">
+      <p><strong>Time:</strong> 2025-05-04</p>
+      <p><strong>Theme:</strong> Celebration</p>
+      <p><strong>Description:</strong> Family celebration.</p>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="https://edef11.pcloud.com/cfZ4jo2pIZxjw0B17Z7ueBZZqxdL0kZ2ZZxnJZZfYuQZ80Zt4ZrFZzpZ1LZ30ZBFZvJZXXZn5ZvpZozZeVZgHZ7PlnT91iAyuxOD3Q7KOzfSuaO9eV/未fvd标题-1.jpg" alt="Image5" onclick="openLightbox(this,5)">
+    <div class="photo-info">
+      <p><strong>Time:</strong> 2025-05-05</p>
+      <p><strong>Theme:</strong> Travel</p>
+      <p><strong>Description:</strong> Exploring new places.</p>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <img src="https://edef3.pcloud.com/cfZC8yWpIZ07l0B17Z7ueBZZIwdL0kZ2ZZxnJZZy9TmZzpZuLZ14ZNLZkFZW5ZwHZYkZUHZaJZyRZ9LZBJZ0LZ5CwDLuGYmDYUXRd6BXPBvYxv9KK7/imgRT031.jpg" alt="Image6" onclick="openLightbox(this,6)">
+    <div class="photo-info">
+      <p><strong>Time:</strong> 2025-05-06</p>
+      <p><strong>Theme:</strong> Family Event</p>
+      <p><strong>Description:</strong> Fun gathering.</p>
+    </div>
+  </div>
+
+  <!-- 其余图片同样方式添加 -->
 </section>
 
 <section id="video">
-  <h2>Videos</h2>
-  <div class="video-container">
-    <video class="site-video" controls>
-      <source src="https://edef1.pcloud.com/cfZwbFzpIZtV39f17Z7ueBZZxpKL0kZ2ZZxnJZZMzHQZ3VZV8Z9VZiRZHLZXLZh5ZczZA4Zu4Z8HZK0ZL8ZopZiF2hO9rlbqXpbxVkGUeb8BBJgX1y/2025.05.01-10.00.08_SHOT_V00_WuZhen_BY-RIST%20JIANWEN%20CHENG.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <div class="video-container">
-    <video class="site-video" controls>
-      <source src="https://edef2.pcloud.com/cfZ9rQQpIZKp1qf17Z7ueBZZHtKL0kZ2ZZxnJZZ1DXX7ZuzZ9pZl0ZpzZSLZ7LZvHZvRZsFZ0JZCFZMVZt4ZKJZMx2HsBoo2akq7ielEbpCH0K8IBHX/vid-250506231211213.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+  <h2>Video</h2>
+  <video controls id="video1" src="https://edef1.pcloud.com/cfZwbFzpIZtV39f17Z7ueBZZxpKL0kZ2ZZxnJZZMzHQZ3VZV8Z9VZiRZHLZXLZh5ZczZA4Zu4Z8HZK0ZL8ZopZiF2hO9rlbqXpbxVkGUeb8BBJgX1y/2025.05.01-10.00.08_SHOT_V00_WuZhen_BY-RIST%20JIANWEN%20CHENG.mp4"></video>
+  <video controls id="video2" src="https://edef2.pcloud.com/cfZ9rQQpIZKp1qf17Z7ueBZZHtKL0kZ2ZZxnJZZ1DXX7ZuzZ9pZl0ZpzZSLZ7LZvHZvRZsFZ0JZCFZMVZt4ZKJZMx2HsBoo2akq7ielEbpCH0K8IBHX/vid-250506231211213.mp4"></video>
 </section>
 
 <section id="article">
-  <h2>Articles</h2>
-  <div class="article">
-    <div class="article-title">Reset Curve(s) Document</div>
-    <div class="article-category">Category: Document</div>
-    <div class="article-content">
-      <p>This is a sample content from your document. Preserve text and images here.</p>
-      <img src="https://edef2.pcloud.com/DLZPhtRpIZuJ5Pf17Z7ueBZZwSKL0kZ2ZZxnJZZkaVZzzZO0ZcJZNMVYjVdBdn8ePl8uX9WPQuiquJDX/Reset%20Curve%28s%29_Demo_Icon_01.png" alt="Document Image">
-    </div>
+  <h2>Article</h2>
+  <div>
+    <h3>Reset Curve(s)</h3>
+    <img src="https://edef2.pcloud.com/DLZPhtRpIZuJ5Pf17Z7ueBZZwSKL0kZ2ZZxnJZZkaVZzzZO0ZcJZNMVYjVdBdn8ePl8uX9WPQuiquJDX/Reset%20Curve%28s%29_Demo_Icon_01.png" alt="Article Image">
+    <p>All text content and formatting preserved from .odt file.</p>
   </div>
-</section>
-
-<section id="audio">
-  <h2>Audio</h2>
-  <audio class="site-audio" controls>
-    <source src="https://edef10.pcloud.com/cfZgiE0pIZWWrSf17Z7ueBZZO7KL0kZ2ZZxnJZZbHa4ZzpZv0ZB8Z78Z60ZrFZY0Z04ZSHZIVZXFZOHZwLZH5ZndlhdEDcYv8ufk1PuDbfvRY2PfDX/%E3%80%8A%E8%BD%BB%E4%B8%8E%E9%87%8D%E3%80%8B-%20%E8%B0%88%E8%AF%9D%E5%BD%95-%E7%89%87%E6%AE%B5-0056.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
 </section>
 
 <section id="information">
   <h2>Information</h2>
-  <p>Additional family information, contact details, or instructions.</p>
+  <p>Additional family info or notes about the website.</p>
 </section>
 
 <div id="lightbox">
-  <img id="lightbox-img" src="">
-  <div id="lightbox-info"></div>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="">
+    <div id="lightbox-info"></div>
+  </div>
+  <div id="lightbox-comments">
+    <div class="sort-buttons">
+      <button onclick="setSort('newest')">Newest</button>
+      <button onclick="setSort('hot')">Most Liked</button>
+    </div>
+    <h4>Comments</h4>
+    <div class="comment-list"></div>
+    <input type="text" placeholder="Your Name" class="comment-name"><br>
+    <textarea placeholder="Write a comment..." class="comment-text"></textarea><br>
+    <button id="submit-comment-btn">Submit</button>
+    <hr>
+    <input type="text" placeholder="Your Name" class="voice-comment-name"><br>
+    <button id="start-record-btn">🎤 Record</button>
+    <button id="stop-record-btn" disabled>⏹ Stop</button>
+    <button id="upload-record-btn" disabled>✅ Upload</button>
+    <audio id="recorded-audio" controls style="display:none;"></audio>
+  </div>
 </div>
 
-<audio id="background-audio" loop>
-  <source src="https://edef1.pcloud.com/cfZIPMwFIZ2p2eu17Z7ueBZZWVlL0kZ2ZZxnJZZbHa4ZzpZv0ZB8Z78Z60ZrFZY0Z04ZSHZIVZXFZOHZwLZH5ZUbJIAWS35tRHjqhoboM67QquBf1X/Clio%20-%20Quelqu%E2%80%99un%20quelque%20part%20%28Clip%20officiel%29-yt.savetube.me.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-  // Fade-in on scroll
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){ entry.target.classList.add('visible'); }
-    });
-  }, {threshold:0.1});
-  sections.forEach(section => observer.observe(section));
+// ---------- Utility ----------
+function randomColor(){ const colors=['#e6194b','#3cb44b','#ffe119','#4363d8','#f58231','#911eb4','#46f0f0','#f032e6','#bcf60c','#fabebe','#008080','#e6beff','#9a6324','#fffac8','#800000']; return colors[Math.floor(Math.random()*colors.length)]; }
 
-  // Smooth scroll
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', e=>{
-      e.preventDefault();
-      document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-    });
+// ---------- Fade-in ----------
+document.querySelectorAll('section').forEach(s=>{
+  window.addEventListener('scroll',()=>{ if(s.getBoundingClientRect().top<window.innerHeight-100)s.classList.add('visible'); });
+});
+
+// ---------- Smooth scroll ----------
+document.querySelectorAll('nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
   });
+});
 
-  // Lightbox for images with info
-  function openLightboxWithInfo(img){
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
-    const lbInfo = document.getElementById('lightbox-info');
-    lbImg.src = img.src;
-    lbInfo.innerHTML = img.nextElementSibling.innerHTML;
-    lb.style.display='flex';
-    lb.onclick = (e)=> { if(e.target===lb) lb.style.display='none'; }
-  }
+// ---------- Lightbox ----------
+let currentPhotoId=null;
+let sortType='newest';
+function openLightbox(img, photoId){
+  currentPhotoId=photoId;
+  const lb=document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src=img.src;
+  document.getElementById('lightbox-info').innerHTML=img.nextElementSibling.innerHTML;
+  lb.style.display='flex';
+  loadComments(photoId);
+  lb.onclick = e=>{ if(e.target===lb) lb.style.display='none'; }
+}
 
-  // Background audio control
-  const bgm = document.getElementById('background-audio');
-  let bgmPlaying = true;
-  const toggleBtn = document.getElementById('bgm-toggle');
-  toggleBtn.addEventListener('click', ()=>{
-    if(bgmPlaying){ bgm.pause(); bgmPlaying=false; }
-    else { bgm.play(); bgmPlaying=true; }
+// ---------- Comment storage ----------
+function saveComment(photoId,name,text,color){
+  const key=`photo-comments-${photoId}`;
+  const comments=JSON.parse(localStorage.getItem(key)||'[]');
+  comments.push({name,text,time:new Date().toLocaleString(),color,likes:0,replies:[]});
+  localStorage.setItem(key,JSON.stringify(comments));
+}
+function loadComments(photoId){
+  const key=`photo-comments-${photoId}`;
+  let comments=JSON.parse(localStorage.getItem(key)||'[]');
+  if(sortType==='hot') comments.sort((a,b)=>b.likes-a.likes);
+  else comments.sort((a,b)=>new Date(b.time)-new Date(a.time));
+  const commentList=document.querySelector('.comment-list');
+  commentList.innerHTML='';
+  comments.forEach((c,i)=>{
+    const div=document.createElement('div');
+    div.className='comment-item';
+    div.style.color=c.color;
+    div.innerHTML=`<strong>${c.name}</strong> [${c.time}]: ${c.text} 
+      <div class="comment-controls">
+      <button class="like-btn">👍 ${c.likes}</button>
+      <button class="reply-btn">Reply</button>
+      <button class="delete-comment">Delete</button>
+      </div>
+      <div class="replies"></div>`;
+    div.querySelector('.like-btn').onclick=()=>{ c.likes+=1; localStorage.setItem(key,JSON.stringify(comments)); loadComments(photoId); };
+    div.querySelector('.delete-comment').onclick=()=>{ comments.splice(i,1); localStorage.setItem(key,JSON.stringify(comments)); loadComments(photoId); };
+    div.querySelector('.reply-btn').onclick=()=>{ const replyName=prompt('Your Name:'); if(!replyName)return; const replyText=prompt('Reply Text:'); if(!replyText)return; c.replies.push({name:replyName,text:replyText,time:new Date().toLocaleString()}); localStorage.setItem(key,JSON.stringify(comments)); loadComments(photoId); };
+    c.replies.forEach(r=>{ const rDiv=document.createElement('div'); rDiv.className='comment-reply'; rDiv.innerHTML=`<strong>${r.name}</strong> [${r.time}]: ${r.text}`; div.querySelector('.replies').appendChild(rDiv); });
+    commentList.appendChild(div);
   });
+}
+document.getElementById('submit-comment-btn').onclick=()=>{
+  const name=document.querySelector('.comment-name').value||'Anonymous';
+  const text=document.querySelector('.comment-text').value;
+  if(!text)return alert('Enter comment');
+  saveComment(currentPhotoId,name,text,randomColor());
+  document.querySelector('.comment-text').value='';
+  loadComments(currentPhotoId);
+};
+function setSort(type){ sortType=type; loadComments(currentPhotoId); }
 
-  // Pause bgm when any site video/audio plays
-  const siteMedia = document.querySelectorAll('.site-video, .site-audio');
-  siteMedia.forEach(media=>{
-    media.addEventListener('play', ()=> { bgm.pause(); });
-    media.addEventListener('pause', ()=> { if(bgmPlaying) bgm.play(); });
-    media.addEventListener('ended', ()=> { if(bgmPlaying) bgm.play(); });
-  });
+// ---------- Background music ----------
+const bgm=document.getElementById('bgm');
+document.getElementById('bgm-toggle').onclick=()=>{ bgm.paused?bgm.play():bgm.pause(); };
+document.querySelectorAll('video,audio').forEach(m=>{
+  m.addEventListener('play',()=>{ bgm.pause(); });
+  m.addEventListener('pause',()=>{ bgm.play(); });
+});
 
-  window.addEventListener('load',()=>{
-    const playPromise = bgm.play();
-    if(playPromise!==undefined){
-      playPromise.catch(error=>console.log("Autoplay prevented:", error));
-    }
-  });
+// ---------- Voice recording ----------
+let mediaRecorder, audioChunks=[];
+const recordBtn=document.getElementById('start-record-btn');
+const stopBtn=document.getElementById('stop-record-btn');
+const uploadBtn=document.getElementById('upload-record-btn');
+const recordedAudio=document.getElementById('recorded-audio');
+recordBtn.onclick=async()=>{
+  const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+  mediaRecorder=new MediaRecorder(stream);
+  mediaRecorder.start();
+  audioChunks=[];
+  mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);
+  stopBtn.disabled=false; recordBtn.disabled=true;
+};
+stopBtn.onclick=()=>{
+  mediaRecorder.stop();
+  mediaRecorder.onstop=()=>{
+    const blob=new Blob(audioChunks,{type:'audio/mp3'});
+    recordedAudio.src=URL.createObjectURL(blob);
+    recordedAudio.style.display='block';
+    uploadBtn.disabled=false;
+  };
+  stopBtn.disabled=true; recordBtn.disabled=false;
+};
+uploadBtn.onclick=()=>{
+  const name=document.querySelector('.voice-comment-name').value||'Anonymous';
+  const audioSrc=recordedAudio.src;
+  const key=`photo-comments-${currentPhotoId}`;
+  const comments=JSON.parse(localStorage.getItem(key)||'[]');
+  comments.push({name,text:'[Voice Comment]',time:new Date().toLocaleString(),color:randomColor(),likes:0,replies:[],voice:audioSrc});
+  localStorage.setItem(key,JSON.stringify(comments));
+  loadComments(currentPhotoId);
+  recordedAudio.style.display='none';
+  uploadBtn.disabled=true;
+};
 </script>
 
 </body>
