@@ -1,0 +1,120 @@
+{
+  "_comment": "相册数据文件",
+  "_字段说明": {
+    "visible":    "true=显示  /  false=屏蔽隐藏（数据保留但不渲染）",
+    "featured":   "true=出现在首页英雄区拼贴，最多取前4张",
+    "coverImage": "封面图路径。图片放在 files/images/ 文件夹下，填写格式：'files/images/文件名.jpg'。留空 \"\" 则显示 icon + color 渐变",
+    "url":        "点击卡片跳转地址。本地页面如 'files/albums/sanya.html'，外链如 'https://photos.google.com/...'。留空 \"\" 不跳转",
+    "color":      "封面渐变色，仅在 coverImage 为空时生效，格式 [起始色, 结束色]",
+    "icon":       "封面 emoji，仅在 coverImage 为空时显示",
+    "category":   "筛选标签，值必须存在于顶部 categories 数组中，可多个"
+  },
+  "_路径示例": {
+    "本地图片": "files/images/sanya_cover.jpg",
+    "本地图片2": "files/images/birthday_2024.png",
+    "外部图片": "https://cdn.example.com/photo.jpg",
+    "本地页面": "files/albums/sanya/index.html",
+    "外部链接": "https://photos.google.com/album/xxx"
+  },
+  "categories": ["全部", "2025", "2024", "2023", "节假日", "旅行", "生日"],
+  "albums": [
+    {
+      "id": "album-001",
+      "visible": true,
+      "featured": true,
+      "title": "三亚全家游",
+      "date": "2024年7月",
+      "count": 38,
+      "category": ["旅行", "2024"],
+      "icon": "🏖️",
+      "color": ["#e8ddd0", "#d4c5b0"],
+      "coverImage": "files/images/a.jpg",
+      "url": "files/images/a.jpg",
+      "description": "一家人第一次去海南，孩子第一次见到大海。"
+    },
+    {
+      "id": "album-002",
+      "visible": true,
+      "featured": true,
+      "title": "奶奶八十大寿",
+      "date": "2024年3月",
+      "count": 52,
+      "category": ["生日", "2024", "节假日"],
+      "icon": "🎂",
+      "color": ["#dde8e0", "#c5d4cc"],
+      "coverImage": "",
+      "url": "",
+      "description": "四世同堂，热闹非凡，奶奶笑得合不拢嘴。"
+    },
+    {
+      "id": "album-003",
+      "visible": true,
+      "featured": false,
+      "title": "春日踏青",
+      "date": "2024年4月",
+      "count": 21,
+      "category": ["旅行", "2024"],
+      "icon": "🌸",
+      "color": ["#e8e0d0", "#d4cdb5"],
+      "coverImage": "",
+      "url": "",
+      "description": "公园里的樱花开了，全家一起赏花野餐。"
+    },
+    {
+      "id": "album-004",
+      "visible": true,
+      "featured": false,
+      "title": "圣诞联欢",
+      "date": "2023年12月",
+      "count": 67,
+      "category": ["节假日", "2023"],
+      "icon": "🎄",
+      "color": ["#e0dde8", "#cbc5d4"],
+      "coverImage": "",
+      "url": "",
+      "description": "亲戚们聚在一起，孩子们表演节目，热闹极了。"
+    },
+    {
+      "id": "album-005",
+      "visible": true,
+      "featured": true,
+      "title": "黄山云海",
+      "date": "2023年10月",
+      "count": 44,
+      "category": ["旅行", "2023"],
+      "icon": "🏔️",
+      "color": ["#e8d8d0", "#d4bfb5"],
+      "coverImage": "",
+      "url": "",
+      "description": "秋天的黄山，云海翻腾，美不胜收。"
+    },
+    {
+      "id": "album-006",
+      "visible": true,
+      "featured": false,
+      "title": "乡村夏日",
+      "date": "2023年8月",
+      "count": 29,
+      "category": ["旅行", "2023"],
+      "icon": "🌻",
+      "color": ["#e8e4d0", "#d4cfb5"],
+      "coverImage": "",
+      "url": "",
+      "description": "回老家探亲，孩子在田间追蝴蝶，尽兴而归。"
+    },
+    {
+      "id": "album-007",
+      "visible": false,
+      "featured": false,
+      "title": "（草稿）待整理照片",
+      "date": "2025年1月",
+      "count": 120,
+      "category": ["2025"],
+      "icon": "📦",
+      "color": ["#e0e0e0", "#cccccc"],
+      "coverImage": "",
+      "url": "",
+      "description": "尚未整理，暂时隐藏。"
+    }
+  ]
+}
