@@ -1,0 +1,104 @@
+{
+  "_comment": "视频数据文件",
+  "_字段说明": {
+    "visible":   "true=显示  /  false=屏蔽隐藏",
+    "featured":  "true=作为主视频显示为大卡片（只取第一个 featured=true 的）",
+    "url":       "点击播放后跳转地址。本地视频：'files/videos/2024_annual.mp4'，外链：'https://www.youtube.com/watch?v=xxx'。留空 \"\" 不跳转",
+    "thumbnail": "视频封面缩略图。本地图片：'files/images/video_thumb.jpg'，外链图片亦可。留空 \"\" 显示默认渐变背景",
+    "duration":  "时长，格式自由，如 '12:34' 或 '约15分钟'",
+    "director":  "拍摄者姓名，留空 \"\" 则不显示"
+  },
+  "_路径示例": {
+    "本地视频": "files/videos/2024_annual.mp4",
+    "本地缩略图": "files/images/video_thumb_001.jpg",
+    "外部视频": "https://www.youtube.com/watch?v=xxx",
+    "优酷": "https://v.youku.com/xxx",
+    "bilibili": "https://www.bilibili.com/video/BVxxx"
+  },
+  "videos": [
+    {
+      "id": "video-001",
+      "visible": true,
+      "featured": true,
+      "title": "2024 家庭年度记录片",
+      "date": "2024年12月31日",
+      "duration": "12:34",
+      "director": "爸爸",
+      "icon": "🎞️",
+      "thumbnail": "",
+      "url": "",
+      "description": "用镜头串联起2024年每一个珍贵时刻，年终特辑。",
+      "tags": ["年度", "2024", "精选"]
+    },
+    {
+      "id": "video-002",
+      "visible": true,
+      "featured": false,
+      "title": "小宝宝第一步",
+      "date": "2024年6月",
+      "duration": "3:21",
+      "director": "妈妈",
+      "icon": "👶",
+      "thumbnail": "",
+      "url": "",
+      "description": "小涵摇摇晃晃迈出人生第一步，全家鼓掌欢呼。",
+      "tags": ["成长", "2024"]
+    },
+    {
+      "id": "video-003",
+      "visible": true,
+      "featured": false,
+      "title": "婚礼现场回顾",
+      "date": "2023年5月",
+      "duration": "7:05",
+      "director": "摄影师",
+      "icon": "💒",
+      "thumbnail": "",
+      "url": "",
+      "description": "那一天，阳光正好，我们成为了一家人。",
+      "tags": ["婚礼", "2023", "精选"]
+    },
+    {
+      "id": "video-004",
+      "visible": true,
+      "featured": false,
+      "title": "春节团圆夜",
+      "date": "2024年2月",
+      "duration": "2:48",
+      "director": "爸爸",
+      "icon": "🧨",
+      "thumbnail": "",
+      "url": "",
+      "description": "除夕夜，一家人围坐包饺子，笑声不断。",
+      "tags": ["节假日", "2024"]
+    },
+    {
+      "id": "video-005",
+      "visible": true,
+      "featured": false,
+      "title": "毕业典礼",
+      "date": "2023年6月",
+      "duration": "5:16",
+      "director": "爸爸",
+      "icon": "🎓",
+      "thumbnail": "",
+      "url": "",
+      "description": "孩子幼儿园毕业，穿着小学士服，帅气极了。",
+      "tags": ["成长", "2023"]
+    },
+    {
+      "id": "video-006",
+      "visible": false,
+      "featured": false,
+      "title": "（未剪辑）旅行原始素材",
+      "date": "2025年2月",
+      "duration": "45:00",
+      "director": "",
+      "icon": "📹",
+      "thumbnail": "",
+      "url": "",
+      "description": "原始素材，待剪辑，暂时隐藏。",
+      "tags": ["待处理"]
+    }
+  ]
+}
